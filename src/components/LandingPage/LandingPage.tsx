@@ -1,46 +1,49 @@
 import { FC } from "react";
 import Image from "next/image";
 import styled from "styled-components";
+import React, { useState } from 'react';
+import { useRouter } from 'next/router';
+import Nigeria from '../../pages/nigeria';
+// import UserProfile from './components/UserProfile';
+// import Merch from './components/Merch';
+// import FanMeetup from './components/FanMeetup';
+// import Countdown from './components/Countdown';
+// import Scene from './components/Scene';
 
 import logo from "public/images/logo.png";
-import Box from "src/components/Box/Box";
-import TilesSection from "src/components/TilesSection/TilesSection";
 
 import { pxToRem } from "src/styles/px-to-rem";
 
 import * as S from "./LandingPage.styled";
+import NavBar from "../NavBar/NavBar";
 
 const Space = styled.div`
   height: ${pxToRem(80)};
 `;
 
 const LandingPage: FC = () => {
+
+  const router = useRouter();
+
+
   return (
-    <>
-      <Space />
-
-      <Box direction="row">
-        <S.ContentContainer justifyContent="center">
-          <S.Title>
-            Insurance
-            <div>made easy.</div>
-          </S.Title>
-
-          <S.Content>Get coverage in 2 minutes. Cancel monthly.</S.Content>
-
-          <S.ButtonContainer direction="row">
-            <S.Button variant="primary">Get Covered</S.Button>
-            <S.Button variant="secondary">Learn More</S.Button>
-          </S.ButtonContainer>
-        </S.ContentContainer>
-
-        <S.Logo direction="row" justifyContent="flex-end" flex={1}>
-          <Image src={logo.src} alt="logo" width={777} height={487} />
-        </S.Logo>
-      </Box>
-
-      <TilesSection />
-    </>
+    <S.AppCont>
+        {/* <NavBar /> */}
+      {router.pathname === '/' && (
+       <div>
+          <S.Overlay className="overlay"></S.Overlay>
+          <S.Title className="title">CMS Fandom</S.Title>
+          <S.Subtitle className="subtitle">(Call Me Super)</S.Subtitle>
+          <Image width={5} src={logo} alt="Logo" />
+      </div>
+      )}
+        {router.pathname === '/nigeria' && <Nigeria />}
+        {/* {router.pathname === '/[country]/profile' && <UserProfile />}
+        {router.pathname === '/[country]/merch' && <Merch />}
+        {router.pathname === '/[country]/fanmeetup' && <FanMeetup />}
+        {router.pathname === '/[country]/countdown' && <Countdown />}
+        {router.pathname === '/[country]/scene/[sceneId]' && <Scene />} */}
+      </S.AppCont>
   );
 };
 

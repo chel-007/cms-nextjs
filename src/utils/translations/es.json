@@ -1,0 +1,13 @@
+{
+    "navigation": {
+      "profile": "Perfil",
+      "merch": "Mercancía",
+      "fanMeetup": "Encuentro de Fans",
+      "countdown": "Cuenta Regresiva"
+    },
+    "userProfile": {
+      "name": "Nombre",
+      "age": "Edad"
+    }
+  }
+  

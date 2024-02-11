@@ -5,6 +5,12 @@ export type ErrorResponse = {
 };
 
 export type UserInfo = {
-  email?: string;
   country?: string;
+  locality?: string;
+  email?: string;
+  birthday?: string;
+  gender?: string;
+  firstName?: string;
+  givenName?: string;
+  nickname?: string;
 };

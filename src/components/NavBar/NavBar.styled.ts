@@ -3,87 +3,68 @@ import styled from "styled-components";
 import { pxToRem } from "src/styles/px-to-rem";
 import Box from "../Box/Box";
 
-export const Container = styled(Box)`
-  padding: ${pxToRem(28)} ${pxToRem(16)};
-  height: ${pxToRem(32)};
-
-  @media (min-width: 1024px) {
-    padding: ${pxToRem(28)} ${pxToRem(80)};
-    height: ${pxToRem(72)};
-  }
-`;
-
-export const NavigationContainer = styled<any>(Box)`
-  color: ${(props) => (props.$isLocal ? `#090c11` : `#222831`)};
-
-  @media (min-width: 1024px) {
-    padding: ${pxToRem(22)} ${pxToRem(100)};
-    height: ${pxToRem(72)};
-  }
-`;
-
-export const Title = styled.div<any>`
-  color: ${(props) => (props.$isLocal ? `#292929` : `#10375c`)};
-  font-size: ${pxToRem(24)};
-  font-family: "Playfair Display";
-  font-weight: 700;
-  user-select: none;
-  cursor: pointer;
-`;
-export const NavTabs = styled.div`
-  margin-right: ${pxToRem(40)};
-  font-family: "lato", sans-serif;
-  font-weight: 700;
-`;
-
-export const Button = styled.button<{ variant: "primary" | "secondary" }>`
-  background: #fff;
-  padding: 12px 24px;
-  color: #ff5722;
-  font-family: "lato", sans-serif;
-  cursor: pointer;
-
-  button:nth-of-type(1) {
-    margin-right: ${pxToRem(12)};
-  }
-
-  ${({ variant }) =>
-    variant === "primary"
-      ? `
-      background: #fff;
-      color:#ff5722;
-    `
-      : `
-      background: #ff5722;
-      color: #fff;
-    `}
-`;
-
-export const Account = styled(Box)`
-  cursor: pointer;
-`;
-
-export const Avatar = styled.div<any>`
-  width: ${pxToRem(32)};
-  height: ${pxToRem(32)};
-  background-color: ${(props) => (props.$isLocal ? `#292929` : `#10375c`)};
+export const Header = styled.header`
+  background-color: rgba(0, 0, 0, 0.7); /* Black with 0.7 opacity */
+  color: white;
+  padding: 20px 15px; /* Adjust padding as needed */
   display: flex;
+  justify-content: space-between;
   align-items: center;
-  justify-content: center;
-  border-radius: ${pxToRem(16)};
+  width: 100%;
+  position: fixed; /* Fixed position to stick to the top */
+  top: 0;
+  z-index: 1000; /* Ensure it's above other content */
 `;
 
-export const Email = styled.div<any>`
-  color: #090c11;
-  font-size: ${pxToRem(16)};
-  font-family: "lato", sans-serif;
-  font-weight: 700;
-  color: ${(props) => (props.$isLocal ? `#090c11` : `#222831`)};
+export const Nav = styled.nav`
+  display: flex;
+  align-items: center; /* Center align items vertically */
+  justify-content: flex-end;
+  padding: 0px 30px;
+  margin: 0px 5%;
+  flex-grow: 1; /* Allow nav to grow and fill the available space */
 `;
 
-export const Loading = styled.div<any>`
-  color: ${(props) => (props.$isLocal ? `#090c11` : `#222831`)};
-  font-size: ${pxToRem(16)};
-  font-family: "lato", sans-serif;
-  font-weight: 700;
+export const Link = styled.a`
+  text-decoration: none;
+  margin-right: 50px; /* Adjust margin between links */
+  text-align: center;
+
+  h1 {
+    font-size: 1.6rem; /* Adjust font size as needed */
+    color: wheat;
+    margin-top: 0; /* Reset margin */
+    margin-bottom: 0;
+  }
+`;
+
+export const RouteLink = styled(Link)`
+  margin: 0px 25px;
+`;
+
+export const Button = styled.button`
+  background-color: #FFA500; /* Orange color */
+  color: white;
+  border: none;
+  padding: 10px 20px; /* Adjust padding as needed */
+  border-radius: 3px;
+  font-size: 1.7rem; /* Adjust font size as needed */
+  cursor: pointer;
+  margin-left: auto; /* Align button to the far right */
+
+  &:hover {
+    background-color: #FF4500; /* Darker orange on hover */
+  }
+`;
+
+// Add media query for responsive design
+export const ResponsiveHeader = styled(Header)`
+  @media (max-width: 768px) {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  h1 {
+    margin-bottom: 10px;
+  }
 `;

@@ -14,6 +14,7 @@ export const useFetchUserInfoQuery = () => {
         throw new Error("Unable to get user info. Are you authenticated?");
       }
       return await response.json();
+
     },
     { retry: false }
   );

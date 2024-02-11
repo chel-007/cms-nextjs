@@ -5,5 +5,9 @@ export const useLocalContent = () => {
 
   return {
     country: isAuthenticated && user?.country,
+    email: isAuthenticated && user?.email,
+    locality: isAuthenticated && user?.locality,
+    birthday: isAuthenticated && user?.birthday,
+    gender: isAuthenticated && user?.gender,
   };
 };

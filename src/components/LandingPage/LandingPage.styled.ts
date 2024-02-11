@@ -1,72 +1,85 @@
 import styled from "styled-components";
 
-import Box from "../Box/Box";
-import { pxToRem } from "src/styles/px-to-rem";
+import BG from "../../../public/images/spacebg3.jpg";
 
-export const Logo = styled(Box)`
-  width: ${pxToRem(770)};
+export const AppCont = styled.div`
+font-family: 'Arial', sans-serif;
+background: url(${BG.src}) center/cover no-repeat;
+height: 100vh;
+width: 100%; /* Ensure container spans full width */
+overflow: hidden;
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+color: white; /* Text color */
 `;
-export const ContentContainer = styled(Box)`
-  width: ${pxToRem(370)};
+
+export const Overlay = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)); /* Dark overlay */
+  z-index: 1;
 `;
 
-export const Title = styled.div`
-  font-size: ${pxToRem(52)};
-  font-family: "lora", sans-serif;
-  font-weight: bold;
-  color: #10375c;
+export const Title = styled.h1`
+  font-size: 16rem;
+  margin-bottom: 7px;
+  color: #FFA500; /* Orange color */
+  z-index: 2;
+`;
 
-  div {
-    line-height: 1;
-    color: #ff5722;
+export const Subtitle = styled.div`
+  font-size: 4rem;
+  margin-bottom: 120px;
+  text-align: center;
+  color: #FFD700; /* Gold color */
+  z-index: 2;
+`;
+
+export const Button = styled.button`
+  background-color: #FFA500; /* Orange color */
+  color: white;
+  border: none;
+  padding: 10px 40px; /* Larger padding for a prominent login button */
+  margin: 5px;
+  border-radius: 3px;
+  font-size: 1.3rem;
+  cursor: pointer;
+  z-index: 2;
+
+  &:hover {
+    background-color: #FF4500; /* Darker orange on hover */
   }
 `;
-export const Content = styled.div`
-  margin-top: ${pxToRem(32)};
-  font-size: ${pxToRem(20)};
-  font-family: "lato", sans-serif;
-  font-weight: 400;
+
+export const Logo = styled.img`
+  width: 150px; /* Adjust the size of your logo */
+  margin-bottom: 20px;
+  z-index: 2;
 `;
 
-export const ButtonContainer = styled(Box)`
-  margin-top: ${pxToRem(48)};
-`;
+// Add media queries for responsiveness
+export const ResponsiveStyles = styled.div`
+  @media (max-width: 768px) {
+    ${Title} {
+      font-size: 2.5rem;
+    }
 
-export const Button = styled.button<{ variant: "primary" | "secondary" }>`
-  display: flex;
-  align-items: center;
-  text-align: center;
-  background: #10375c;
-  width: 140px;
-  height: 43px;
-  padding: 12px 24px;
-  font-family: "lato", sans-serif;
-  font-size: ${pxToRem(16)};
-  font-weight: 700;
-  cursor: pointer;
-  margin-right: ${pxToRem(24)};
+    ${Subtitle} {
+      font-size: 1.2rem;
+    }
 
-  ${({ variant }) =>
-    variant === "primary"
-      ? `
-      background: #10375c;
-      color:#fff;
-      box-shadow: 0 4px 16px 0 rgba(16, 55, 92, 0.32);
+    ${Button} {
+      padding: 12px 25px;
+      font-size: 1rem;
+    }
 
-    `
-      : `
-      background: #fff;
-      color: ##10375c;
-      border: 1px solid #10375c;
-    `}
-`;
-
-export const SubscribeLink = styled.div`
-  margin-top: ${pxToRem(32)};
-  font-size: ${pxToRem(16)};
-  font-family: "lato", sans-serif;
-  font-weight: 400;
-  text-decoration: underline;
-  color: #10375c;
-  cursor: pointer;
+    ${Logo} {
+      width: 120px;
+    }
+  }
 `;

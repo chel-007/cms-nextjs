@@ -19,9 +19,9 @@ const Home = () => {
 
   if (!isAuthenticated || !country)
     return (
-      <Wrapper>
+      // <Wrapper>
         <LandingPage />
-      </Wrapper>
+      // </Wrapper>
     );
 
   return (
