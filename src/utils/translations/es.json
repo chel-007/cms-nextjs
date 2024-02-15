@@ -1,13 +1,43 @@
 {
-    "navigation": {
-      "profile": "Perfil",
-      "merch": "Mercancía",
-      "fanMeetup": "Encuentro de Fans",
-      "countdown": "Cuenta Regresiva"
-    },
-    "userProfile": {
-      "name": "Nombre",
-      "age": "Edad"
-    }
+  "navigation": {
+  "profile": "perfil",
+  "merch": "mercancía",
+  "fanMeetup": "encuentro de fans",
+  "countdown": "cuenta atrás"
+  },
+  "userProfile": {
+  "name": "Nombre",
+  "email": "Correo electrónico",
+  "phone": "Número de teléfono",
+  "address": "Dirección",
+  "city": "Ciudad",
+  "country": "País"
+  },
+  "scenes": {
+  "1": {
+  "title": "Ecos del Amanecer Digital: El Nacimiento de los Supernaturales de la IA",
+  "plot": "En un mundo donde la Inteligencia Artificial se infiltra en cada faceta de la existencia, la humanidad enfrenta una pregunta crucial: ¿cuánto tiempo pasará hasta que nos enfrentemos al borde de una catástrofe global? Años después de la explosión de la IA de 2023, la humanidad ha mostrado una resistencia e ingenio incomparables. El mundo se encuentra liberado de sus calamidades históricas y de la amplia agitación, cada centímetro saturado de avance tecnológico. Hemos realizado los sueños de la civilización, pero ¿a qué costo? En un enclave aislado, una IA de Singularidad de NextGen está cerca de culminar su incubación. Diseñada para interactuar directamente con el metaverso, esta IA está lista para extender su influencia a cada entidad humana a través del cosmos, incluidos aquellos que aún no han nacido.",
+  "img": "city.jpg",
+  "duration": "3 minutos",
+  "hasPrev": false,
+  "hasNext": true
+  },
+  "2": {
+  "title": "Encuentro con una cosa extraña y un poco de parkour",
+  "plot": "Una adolescente corre alrededor de la esquina, entrando en el callejón que conduce a la entrada trasera de su casa. Detrás de ella, un oficial de policía la persigue, su presencia una intrusión repentina e indeseada después de los eventos en el parque subterráneo. Pero ¿no era una persecución de alguien todo lo que ella había esperado? Mientras aumenta la velocidad, su mente se llena de pensamientos contradictorios. Hoy no permitirá que la atrapen. A pesar de tropezar con el hormigón, rápidamente recupera el equilibrio antes de que el oficial pueda salir de su vehículo. Adolescente: 'Pero ¿qué demonios acabo de ver en mi cara ahora? Algo extraño... algo como una masa informe. ¿Cómo apareció de la nada? Esto se está poniendo más extraño por segundo, todo porque quería un montaje lleno de acción. Bueno, es hora de concentrarse'. Con determinación, navega por el callejón, evitando hábilmente los obstáculos e incluso ejecutando un salto mortal sobre una puerta cerrada con llave. El oficial no tiene ninguna oportunidad. Todo esto es parte del plan más grande, se tranquiliza a sí misma mientras desaparece alrededor de la esquina.",
+  "img": "alley.png",
+  "duration": "5 minutos",
+  "hasPrev": true,
+  "hasNext": true,
+  "ageRestricted": true
+  },
+  "3": {
+  "title": "Un Montaje de Acción Planeado para Convertirse en una Futura Obra Maestra",
+  "plot": "La adolescente llega a casa, sintiendo la adrenalina aún corriendo por sus venas después de su escapada acrobática por las escaleras de metal fuera de la ventana de su habitación. Recuerda con cariño las innumerables aventuras que ha tenido usando la ventana de su habitación como punto de entrada y salida. Al colapsar sobre su cama, reflexiona sobre el torbellino de eventos de los últimos minutos. Siempre ha sido impulsiva, especialmente cuando la emoción toma el control. Los chicos jugando al fútbol, el extintor de incendios de fácil acceso, su confiable bicicleta deportiva, todos jugaron sus roles perfectamente en su plan. A pesar de la inesperada aparición del policía estirado, duda que haya visto bien su rostro. Mientras mira por la ventana una vez más, sus manos hábilmente recuperan un dispositivo desde afuera. Corriendo hacia su PC de alta tecnología, enchufa ansiosamente el cable, su rostro iluminándose con una amplia sonrisa mientras se prepara para revelar los emocionantes misterios ocultos dentro del dispositivo.",
+  "img": "outskirts.png",
+  "duration": "7 minutos",
+  "hasPrev": true,
+  "hasNext": false
   }
-  
+  }
+  }

@@ -4,7 +4,7 @@ import styled from "styled-components";
 import React, { useState } from 'react';
 import { useRouter } from 'next/router';
 import Nigeria from '../../pages/nigeria';
-// import UserProfile from './components/UserProfile';
+import UserProfile from '../../pages/[country]/userprofile';
 // import Merch from './components/Merch';
 // import FanMeetup from './components/FanMeetup';
 // import Countdown from './components/Countdown';
@@ -13,6 +13,8 @@ import Nigeria from '../../pages/nigeria';
 import logo from "public/images/logo.png";
 
 import { pxToRem } from "src/styles/px-to-rem";
+import { useAuthentication } from "src/lib/hooks/use-authentication";
+import { useLocalContent } from "src/lib/hooks/use-local-content";
 
 import * as S from "./LandingPage.styled";
 import NavBar from "../NavBar/NavBar";
@@ -24,6 +26,11 @@ const Space = styled.div`
 const LandingPage: FC = () => {
 
   const router = useRouter();
+
+  
+  const { user, isAuthenticated, isLoading } = useAuthentication();
+
+  const country = user?.country
 
 
   return (
@@ -38,8 +45,8 @@ const LandingPage: FC = () => {
       </div>
       )}
         {router.pathname === '/nigeria' && <Nigeria />}
-        {/* {router.pathname === '/[country]/profile' && <UserProfile />}
-        {router.pathname === '/[country]/merch' && <Merch />}
+        {/* {router.pathname === `/${country}/userprofile` && <UserProfile />} */}
+        {/* {router.pathname === '/[country]/merch' && <Merch />}
         {router.pathname === '/[country]/fanmeetup' && <FanMeetup />}
         {router.pathname === '/[country]/countdown' && <Countdown />}
         {router.pathname === '/[country]/scene/[sceneId]' && <Scene />} */}

@@ -5,9 +5,22 @@
       "fanMeetup": "fan meetup",
       "countdown": "countdown"
     },
+    "country": {
+      "scenes": "Scene",
+      "title": "Call Me Super - Interactive Film",
+      "release": "Release: Would be released in Chapters",
+      "builtby": "Built by: Chel007 & TBA Dev",
+      "starring": "Starring: Five Superhero Teenagers",
+      "launch": "Devices: Web browser on Launch",
+      "read": "Read Scene"
+    },
     "userProfile": {
       "name": "Name",
-      "age": "Age"
+      "email": "Emails",
+      "phone": "phoneNumber",
+      "address": "Address",
+      "city": "City",
+      "country": "Country"
     },
 
     "scenes": {

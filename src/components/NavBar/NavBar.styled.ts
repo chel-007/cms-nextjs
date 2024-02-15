@@ -20,7 +20,7 @@ export const Nav = styled.nav`
   display: flex;
   align-items: center; /* Center align items vertically */
   justify-content: flex-end;
-  padding: 0px 30px;
+  padding: 0px 50px;
   margin: 0px 5%;
   flex-grow: 1; /* Allow nav to grow and fill the available space */
 `;
@@ -31,10 +31,11 @@ export const Link = styled.a`
   text-align: center;
 
   h1 {
-    font-size: 1.6rem; /* Adjust font size as needed */
+    font-size: 2.1rem; /* Adjust font size as needed */
     color: wheat;
     margin-top: 0; /* Reset margin */
     margin-bottom: 0;
+    font-family: sans-serif;
   }
 `;
 

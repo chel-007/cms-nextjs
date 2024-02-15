@@ -6,11 +6,14 @@ export type ErrorResponse = {
 
 export type UserInfo = {
   country?: string;
-  locality?: string;
+  city?: string;
+  address?: string;
   email?: string;
-  birthday?: string;
+  birthdate?: string;
   gender?: string;
-  firstName?: string;
   givenName?: string;
   nickname?: string;
+  avatar?: string;
+  phone?: number;
+  postalCode?: number;
 };

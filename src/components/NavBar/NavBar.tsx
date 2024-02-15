@@ -4,7 +4,6 @@ import Image from "next/image";
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 import { useAuthentication } from "src/lib/hooks/use-authentication";
-import { useLocalContent } from "src/lib/hooks/use-local-content";
 import LogoAffinidi from "../../../public/images/logo-affinidi.svg";
 import { clientLogin } from "src/lib/auth/client-login";
 import styled from "styled-components";
@@ -53,15 +52,19 @@ const NavBar: FC = () => {
   const [confirmLogOut, setConfirmLogOut] = useState(false);
   const { user, isAuthenticated, isLoading } = useAuthentication();
 
-  const { country } = useLocalContent();
+  const country = user?.country
+
+  const host = process.env.NEXT_PUBLIC_HOST || 'http://localhost:3000/';
 
   const router = useRouter()
 
   useEffect(() => {
-    if (window.location.href.includes("/")) {
+    if (window.location.pathname === '/') {
       setIsSignInPage(true);
+      console.log("isSignInPage", isSignInPage);
     } else {
       setIsSignInPage(false);
+      console.log("isSignInPage", isSignInPage);
     }
   }, []);
 
@@ -82,15 +85,30 @@ const NavBar: FC = () => {
     }
 
     await signOut();
+    router.push('/');
+    
   }
 
+  
+  useEffect(() => {
+    if (isAuthenticated && isSignInPage) {
+      redirectToCountrySpecificPage();
+    }
+  }, [isAuthenticated]);
+
   const renderLoginState = () => {
-    console.log(country)
-    console.log(user)
-    console.log(user?.country)
-    console.log(user?.email)
-    console.log(user?.locality)
-    console.log(isAuthenticated)
+    // console.log(user)
+    // console.log(user?.country)
+    // console.log(user?.email)
+    // console.log(user?.gender)
+    // console.log(user?.givenName)
+    // console.log(user?.phone)
+    // console.log(user?.avatar)
+    // console.log(user?.birthdate)
+    // console.log(user?.city)
+    // console.log(user?.nickname)
+    // console.log(user?.postalCode)
+    // console.log(user?.address)
     if (isLoading) {
       return <p>Loading...</p>;
     }
@@ -98,9 +116,9 @@ const NavBar: FC = () => {
     if (isAuthenticated) {
       return (
         <div>
-          <span>Welcome, {user?.email}</span>
-
-          <button onClick={handleLogOut}>Logout</button>
+          <span style={{fontSize: '13px', marginRight: '10px'}}>Welcome, {user?.givenName}</span>
+          
+          <S.Button onClick={handleLogOut}>Logout</S.Button>
         </div>
       );
     }
@@ -141,28 +159,29 @@ const NavBar: FC = () => {
 
   return (
     <S.Header className="Header">
-      <Link style={{textDecoration: 'none'}} href="/">
+      <Link style={{textDecoration: 'none'}} href={host}>
           <h1 style={{ fontSize: '3.2rem', color: '#FFA500' }}>CMS Fandom</h1>
       </Link>
       <S.Nav>
         {user && (
           <>
-            <S.Link href={`/${user.country}/profile`}>
+            <S.Link href={`/${user.country}/userprofile`}>
                 <h1 className="link route">{getTranslation(user.country, 'profile')}</h1>
             </S.Link>
             <S.Link href={`/${user.country}/merch`}>
                 <h1 className="link route">{getTranslation(user.country, 'merch')}</h1>
             </S.Link>
-            <S.Link href={`/${user.country}/fanmeetup`}>
+            {/* <S.Link href={`/${user.country}/fanmeetup`}>
                 <h1 className="link route">{getTranslation(user.country, 'fanMeetup')}</h1>
-            </S.Link>
+            </S.Link> */}
             <S.Link href={`/${user.country}/countdown`}>
                 <h1 className="link route">{getTranslation(user.country, 'countdown')}</h1>
             </S.Link>
           </>
         )}
-        {renderLoginState()}
+       
       </S.Nav>
+      {renderLoginState()}
     </S.Header>
   );
 };

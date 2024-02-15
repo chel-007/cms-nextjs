@@ -29,6 +29,9 @@ export const provider: Provider = {
       id: profile.sub,
       email: profile.custom?.find((i: any) => typeof i.email === "string")
         ?.email,
+      country: profile.custom?.find((i: any) => typeof i.country === "string")
+        ?.country,
+      givenName: profile.custom?.find((i: any) => typeof i.name === "string")?.name,
     };
   },
 };

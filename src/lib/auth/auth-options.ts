@@ -29,8 +29,35 @@ export const authOptions: NextAuthOptions = {
           (item: any) => typeof item.email === "string"
         )?.email;
         user.country = profileItems.find(
-          (item: any) => typeof item.address === "object"
-        )?.address?.country;
+          (item: any) => typeof item.country === "string"
+        )?.country;
+        user.givenName = profileItems.find(
+          (item: any) => typeof item.givenName === "string"
+        )?.givenName;
+        user.city = profileItems.find(
+          (item: any) => typeof item.locality === "string"
+        )?.locality;
+        user.gender = profileItems.find(
+          (item: any) => typeof item.gender === "string"
+        )?.gender;
+        user.nickname = profileItems.find(
+          (item: any) => typeof item.nickname === "string"
+        )?.nickname;
+        user.birthdate = profileItems.find(
+          (item: any) => typeof item.birthdate === "string"
+        )?.birthdate;
+        user.avatar = profileItems.find(
+          (item: any) => typeof item.picture === "string"
+        )?.picture;
+        user.phone = profileItems.find(
+          (item: any) => typeof item.phoneNumber === "string"
+        )?.phoneNumber;
+        user.address = profileItems.find(
+          (item: any) => typeof item.streetAddress === "string"
+        )?.streetAddress;
+        user.postalCode = profileItems.find(
+          (item: any) => typeof item.postalCode === "string"
+        )?.postalCode;
         token = {
           ...token,
           user,

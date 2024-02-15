@@ -24,11 +24,11 @@ const Home = () => {
       // </Wrapper>
     );
 
-  return (
-    <Wrapper>
-      <LocalLandingPage />
-    </Wrapper>
-  );
+  // return (
+  //   <Wrapper>
+  //     <LocalLandingPage />
+  //   </Wrapper>
+  // );
 };
 
 export default Home;
