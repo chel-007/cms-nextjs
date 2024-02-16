@@ -7,10 +7,10 @@ import topviewagn from 'public/images/topviewagn.jpg';
 import { useAuthentication } from "src/lib/hooks/use-authentication";
 import Image from 'next/image';
 
-import * as S from "./index.styled";
+import * as S from "../Nigeria/index.styled";
 
 
-const NigeriaCont = () => {
+const FranceCont = () => {
     const { user } = useAuthentication();
 
     const country = user?.country;
@@ -19,6 +19,7 @@ const NigeriaCont = () => {
 
     if (country) {
       translations = loadTranslations(country as string);
+      console.log(translations);
   } else {
     translations = loadTranslations('nigeria');
   }
@@ -91,4 +92,4 @@ const NigeriaCont = () => {
     );
   };
   
-  export default NigeriaCont;
+  export default FranceCont;

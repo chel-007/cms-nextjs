@@ -1,12 +1,87 @@
 {
-    "navigation": {
-      "profile": "Profil",
-      "merch": "Marchandise",
-      "fanMeetup": "Rencontre des Fans",
-      "countdown": "Compte à Rebours"
+  "navigation": {
+  "profile": "profil",
+  "merch": "marchandise",
+  "fanMeetup": "rencontre de fans",
+  "countdown": "compte à rebours",
+  "welcome": "Bienvenue",
+  "logout": "Déconnexion"
+  },
+  "country": {
+  "scenes": "Scène",
+  "title": "Appelez-moi Super - Film interactif",
+  "release": "Libération: Serait publié en chapitres",
+  "builtby": "Construit par: Chel007 & TBA Dev",
+  "starring": "Avec: Cinq adolescents super-héros",
+  "launch": "Appareils: Navigateur Web au lancement",
+  "read": "Lire la scène"
+  },
+  "userProfile": {
+  "name": "Nom",
+  "email": "Email",
+  "phone": "Numéro de téléphone",
+  "address": "Adresse",
+  "city": "Ville",
+  "country": "Pays",
+  "home": "Accueil"
+  },
+  "merch": {
+    "cart": "Add to Cart",
+    "price": "Price",
+    "personalisedShopping": "Use Personalized Shopping",
+    "normalShopping": "Switch to normal shopping",
+    "noProducts": "Aucun produit disponible pour votre sélection"
+  },
+  "countdown": {
+    "timezone": "Fuseau horaire",
+    "days": "Jours",
+    "hours": "Heures",
+    "minutes": "Minutes",
+    "seconds": "Secondes",
+    "release": "La sortie pour",
+    "chapter": "Appel-moi Super : Halo marche dans la ruelle",
+    "launching": "sera lancé le",
+    "time": "dans le compte à rebours ci-dessus",
+    "home": "Accueil"
     },
-    "userProfile": {
-      "name": "Nom",
-      "age": "Âge"
-    }
-  }  
+  "scenes": {
+  "1": {
+  "title": "Échos de l'aube numérique: la naissance des surnaturels de l'IA",
+  "plot": "Dans un monde où l'intelligence artificielle infiltre chaque facette de l'existence, l'humanité est confrontée à une question cruciale: combien de temps avant que nous ne confrontions le bord d'une catastrophe mondiale? Des années après la vague d'IA de 2023, l'humanité a fait preuve d'une résilience et d'une ingéniosité inégalées. Le monde est libéré de ses calamités historiques et de ses troubles généralisés, chaque pouce saturé de progrès technologique. Nous avons réalisé les rêves de la civilisation, mais à quel prix? Dans une enclave isolée, une IA de singularité NextGen approche de la culmination de son incubation. Conçu pour interfacer directement avec le métavers, cette IA est prête à étendre son influence à chaque entité humaine à travers le cosmos, y compris ceux qui doivent encore naître.",
+  "img": "city.jpg",
+  "durationText": "Durée",
+  "duration": "3 minutes",
+  "home": "Aller à la page d'accueil",
+  "next": "Suivant",
+  "prev": "Précédent",
+  "hasPrev": false,
+  "hasNext": true
+  },
+  "2": {
+  "title": "Rencontre avec une boule de merde et un peu de parkour",
+  "plot": "Un adolescent se précipite autour du coin, se précipitant dans la ruelle qui mène à l'entrée arrière de sa maison. Derrière elle, un policier est en pleine poursuite, sa présence une intrusion soudaine et indésirable après les événements du parc souterrain. Mais n'était-ce pas une poursuite de la part de quelqu'un qu'elle avait espérée? Alors qu'elle accélère, son esprit est en proie à des pensées contradictoires. Aujourd'hui, elle ne le laissera pas la rattraper. Malgré un trébuchement sur le béton, elle reprend rapidement son élan avant que l'officier ne puisse sortir de son véhicule. Adolescente: 'Mais qu'est-ce que je viens de voir dans mon visage maintenant? Une sorte de merde de blob... quelque chose. Comment est-ce apparu de nulle part? Cela devient de plus en plus étrange, tout parce que je voulais un montage rempli d'action. Eh bien, il est temps de se concentrer.' Avec détermination, elle navigue dans la ruelle, évitant habilement les obstacles et même exécutant un flip arrière par-dessus une porte verrouillée. L'officier n'a aucune chance. Tout cela fait partie du plan plus important, se rassure-t-elle alors qu'elle disparaît au coin de la rue.",
+  "img": "alley.png",
+  "durationText": "Durée",
+  "duration": "5 minutes",
+  "ageRestriction": "Contenu fermé pour visionner en raison de restrictions d'âge",
+  "home": "Aller à la page d'accueil",
+  "next": "Suivant",
+  "prev": "Précédent",
+  "hasPrev": true,
+  "hasNext": true,
+  "ageRestricted": true
+  },
+  "3": {
+  "title": "Un montage d'action prévu pour devenir un chef-d'œuvre futur",
+  "plot": "L'adolescente rentre chez elle, sentant encore l'adrénaline circuler dans ses veines après son escapade acrobatique à travers les escaliers métalliques à l'extérieur de sa fenêtre. Elle se rappelle avec nostalgie les innombrables aventures qu'elle a eues en utilisant la fenêtre de sa chambre comme point d'entrée et de sortie. S'effondrant sur son lit, elle réfléchit au tourbillon d'événements des dernières minutes. Elle a toujours été impulsive, surtout quand l'excitation prend le dessus. Les garçons jouant au football, l'extincteur facilement accessible, sa fidèle moto de sport - ont tous joué parfaitement leur rôle dans son plan. Malgré l'apparition inattendue du policier snob, elle doute qu'il ait bien regardé son visage. Alors qu'elle regarde par la fenêtre une fois de plus, ses mains récupèrent habilement un appareil de l'extérieur. Se précipitant vers son PC haute technologie, elle branche le câble avec empressement, son visage s'illuminant d'un large sourire alors qu'elle se prépare à décharger les mystères excitants cachés dans l'appareil.",
+  "img": "outskirts.png",
+  "durationText": "Durée",
+  "duration": "7 minutes",
+  "home": "Aller à la page d'accueil",
+  "next": "Suivant",
+  "prev": "Précédent",
+  "hasPrev": true,
+  "hasNext": false
+  }
+  }
+  }

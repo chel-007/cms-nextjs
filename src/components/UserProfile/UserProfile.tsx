@@ -37,6 +37,8 @@ const Profile = () => {
       nigeria: 'en',
       spain: 'es',
       france: 'fr',
+      singapore:'mn',
+      india: 'hi',
       // Add mappings for other countries as needed
     };
   
@@ -115,7 +117,7 @@ const Profile = () => {
         </S.UserDetails>
       </S.ProfileContainer>
       <S.HomeButton className="home-button" onClick={() => router.push(`/${user?.country}`)}>
-        &larr; Home
+        &larr; {userTranslations.userProfile.home}
       </S.HomeButton>
     </S.UserProfileCont>
   );

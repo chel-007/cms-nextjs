@@ -98,7 +98,7 @@ const NavBar: FC = () => {
 
   const renderLoginState = () => {
     // console.log(user)
-    // console.log(user?.country)
+    console.log(user?.country)
     // console.log(user?.email)
     // console.log(user?.gender)
     // console.log(user?.givenName)
@@ -114,11 +114,12 @@ const NavBar: FC = () => {
     }
 
     if (isAuthenticated) {
+      console.log(user?.country)
       return (
         <div>
-          <span style={{fontSize: '13px', marginRight: '10px'}}>Welcome, {user?.givenName}</span>
+          <span style={{fontSize: '13px', marginRight: '10px'}}>{getTranslation(user?.country, 'welcome')}, {user?.givenName}</span>
           
-          <S.Button onClick={handleLogOut}>Logout</S.Button>
+          <S.Button onClick={handleLogOut}>{getTranslation(user?.country, 'logout')}</S.Button>
         </div>
       );
     }
@@ -165,16 +166,16 @@ const NavBar: FC = () => {
       <S.Nav>
         {user && (
           <>
-            <S.Link href={`/${user.country}/userprofile`}>
+            <S.Link href={`/${user.country?.toLowerCase()}/userprofile`}>
                 <h1 className="link route">{getTranslation(user.country, 'profile')}</h1>
             </S.Link>
-            <S.Link href={`/${user.country}/merch`}>
+            <S.Link href={`/${user.country?.toLowerCase()}/merch`}>
                 <h1 className="link route">{getTranslation(user.country, 'merch')}</h1>
             </S.Link>
             {/* <S.Link href={`/${user.country}/fanmeetup`}>
                 <h1 className="link route">{getTranslation(user.country, 'fanMeetup')}</h1>
             </S.Link> */}
-            <S.Link href={`/${user.country}/countdown`}>
+            <S.Link href={`/${user.country?.toLowerCase()}/countdown`}>
                 <h1 className="link route">{getTranslation(user.country, 'countdown')}</h1>
             </S.Link>
           </>

@@ -3,7 +3,9 @@
       "profile": "profile",
       "merch": "merchandise",
       "fanMeetup": "fan meetup",
-      "countdown": "countdown"
+      "countdown": "countdown",
+      "welcome": "Welcome",
+      "logout": "Logout"
     },
     "country": {
       "scenes": "Scene",
@@ -20,7 +22,27 @@
       "phone": "phoneNumber",
       "address": "Address",
       "city": "City",
-      "country": "Country"
+      "country": "Country",
+      "home": "Home"
+    },
+    "merch": {
+      "cart": "Add to Cart",
+      "price": "Price",
+      "personalisedShopping": "Use Personalized Shopping",
+      "normalShopping": "Switch to normal shopping",
+      "noProducts": "No products available for your selection"
+    },
+    "countdown": {
+      "timezone": "Timezone",
+      "days": "Days",
+      "hours": "Hours",
+      "minutes": "Minutes",
+      "seconds": "Seconds",
+      "release": "The release for",
+      "chapter": "Call Me Super: Halo walk in the Alleyway",
+      "launching": "would be launched on",
+      "time": "in the above timer countdown",
+      "home": "Home"
     },
 
     "scenes": {
@@ -28,7 +50,11 @@
           "title": "Echoes of Digital Dawn: The Birth of AI Supernaturals",
           "plot": "In a world where Artificial Intelligence infiltrates every facet of existence, humanity faces a pivotal question: how long until we confront the brink of a global catastrophe? Years following the AI surge of 2023, humanity has exhibited unmatched resilience and ingenuity. The world stands liberated from its historical calamities and widespread turmoil, its every inch saturated with technological advancement. We've realized the dreams of civilization, yet at what cost? In a secluded enclave, a NextGen Singularity AI nears the culmination of its incubation. Designed to interface directly with the metaverse, this AI is poised to extend its influence to every human entity across the cosmos, including those yet to be born.",
           "img": "city.jpg",
+          "durationText": "Duration",
           "duration": "3 minutes",
+          "home": "Go Home",
+          "next": "Next",
+          "prev": "Prev",
           "hasPrev": false,
           "hasNext": true
         },
@@ -36,7 +62,12 @@
           "title": "Blob shit Encounter and a Little Parkour",
           "plot": "A teenager dashes around the corner, darting into the alleyway that leads to her home's back entrance. Behind her, a police officer is in hot pursuit, his presence a sudden and unwelcome intrusion after the events at the underground park. But wasn't a chase from someone all she had hoped for? As she picks up speed, her mind races with conflicting thoughts. Today, she won't let him catch her. Despite a stumble on the concrete, she quickly regains her footing before the officer can exit his vehicle. Teenager: 'But what the fuck did I just see in my face now? Some weird blob shit... something. How did it appear out of nowhere? This is getting stranger by the second, all because I wanted an action-packed montage. Well, time to focus.' With determination, she navigates the alleyway, deftly avoiding obstacles and even executing a backflip over a locked gate. The officer stands no chance. This is all part of the bigger plan, she reassures herself as she disappears around the corner.",
           "img": "alley.png",
+          "durationText": "Duration",
           "duration": "5 minutes",
+          "ageRestriction": "Content closed for viewing due to age restrictions",
+          "home": "Go Home",
+          "next": "Next",
+          "prev": "Prev",
           "hasPrev": true,
           "hasNext": true,
           "ageRestricted": true
@@ -45,7 +76,11 @@
           "title": "An action Montage planned to become a future Masterpiece",
           "plot": "The teenager arrives home, feeling the adrenaline still coursing through her veins after her acrobatic escapade through the metal stairways outside her window. She fondly recalls the countless adventures she's had using her room's window as an entry and exit point. Collapsing onto her bed, she reflects on the whirlwind of events from the past few minutes. She's always been impulsive, especially when excitement takes over. The boys playing football, the easily accessible fire extinguisher, her trusty sports bike—all played their parts perfectly in her plan. Despite the unexpected appearance of the snooty policeman, she doubts he got a good look at her face. As she gazes out the window once more, her hands deftly retrieve a device from outside. Rushing to her High Tech PC, she eagerly plugs in the cable, her face lighting up with a wide smile as she prepares to unload the exciting mysteries hidden within the device.",
           "img": "outskirts.png",
+          "durationText": "Duration",
           "duration": "7 minutes",
+          "home": "Go Home",
+          "next": "Next",
+          "prev": "Prev",
           "hasPrev": true,
           "hasNext": false
         }

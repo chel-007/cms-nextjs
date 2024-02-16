@@ -68,16 +68,48 @@ const Countdowns: FC<CountdownProps> = () => {
     return String(time);
   };
 
+  let countdownTranslations = undefined;
+
+  if (country){
+     countdownTranslations = loadTranslations(country as string);
+    console.log(country);
+  }
+  else {
+    countdownTranslations = loadTranslations('nigeria');
+  }
+
+  function loadTranslations(country: string) {
+    // Mapping between full country names and abbreviated filenames
+    const countryMappings: { [key: string]: string } = {
+      nigeria: 'en',
+      spain: 'es',
+      france: 'fr',
+      singapore:'mn',
+      india: 'hi',
+      // Add mappings for other countries as needed
+    };
+  
+    const countryCode = country.toLowerCase();
+    const fileName = countryMappings[countryCode] || 'en'; // Default to English if no mapping found
+  
+    try {
+      return require(`../../utils/translations/${fileName}.json`);
+    } catch (error) {
+      console.error(`Translations file not found for ${fileName}`);
+      return require(`../../utils/translations/en.json`);
+    }
+  }
+
   return (
     <S.CountdownContainer className="countdown-container">
       <S.Overlay className="overlay" ></S.Overlay>
        <S.CountdownTimer className="countdown-timer">
-        <S.CountdownTimerHeading>Timezone: {currentTimezone}</S.CountdownTimerHeading>
+        <S.CountdownTimerHeading>{countdownTranslations.countdown.timezone}: {currentTimezone}</S.CountdownTimerHeading>
         <S.RoundedBorder className="rounded-border">
           <S.CountdownItem className="countdown-item">
             <S.CountdownUnit className="countdown-unit">
               <S.CountdownValue className="countdown-value">{formatTime(Math.floor((remainingTime || 0) / (1000 * 60 * 60 * 24)))}</S.CountdownValue>
-              <S.CountdownValue className="countdown-label">Days</S.CountdownValue>
+              <S.CountdownValue className="countdown-label">{countdownTranslations.countdown.days}</S.CountdownValue>
             </S.CountdownUnit>
           </S.CountdownItem>
           <S.CountdownItem className="countdown-item">
@@ -85,32 +117,32 @@ const Countdowns: FC<CountdownProps> = () => {
               <S.CountdownValue className="countdown-value">
                 {formatTime(Math.floor(((remainingTime || 0) % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)))}
               </S.CountdownValue>
-              <S.CountdownValue className="countdown-label">Hours</S.CountdownValue>
+              <S.CountdownValue className="countdown-label">{countdownTranslations.countdown.hours}</S.CountdownValue>
             </S.CountdownUnit>
           </S.CountdownItem>
           <S.CountdownItem className="countdown-item">
             <S.CountdownUnit className="countdown-unit">
               <S.CountdownValue className="countdown-value">{formatTime(Math.floor(((remainingTime || 0) % (1000 * 60 * 60)) / (1000 * 60)))}</S.CountdownValue>
-              <S.CountdownValue className="countdown-label">Minutes</S.CountdownValue>
+              <S.CountdownValue className="countdown-label">{countdownTranslations.countdown.minutes}</S.CountdownValue>
             </S.CountdownUnit>
           </S.CountdownItem>
           <S.CountdownItem className="countdown-item">
             <S.CountdownUnit className="countdown-unit">
               <S.CountdownValue className="countdown-value">{formatTime(Math.floor(((remainingTime || 0) % (1000 * 60)) / 1000))}</S.CountdownValue>
-              <S.CountdownValue className="countdown-label">Seconds</S.CountdownValue>
+              <S.CountdownValue className="countdown-label">{countdownTranslations.countdown.seconds}</S.CountdownValue>
             </S.CountdownUnit>
           </S.CountdownItem>
         </S.RoundedBorder>
       </S.CountdownTimer>
       <S.CountdownParagraph>
-        The release for <b>Call Me Super: Halo walk in the Alleyway</b> would be launched on{' '}
+      {countdownTranslations.countdown.release} <b>{countdownTranslations.countdown.chapter}</b> {countdownTranslations.countdown.launching}{' '}
         <a href="https://youtube" style={{ textDecoration: 'none' }}>
           Youtube
         </a>{' '}
-        in the above timer countdown
+        {countdownTranslations.countdown.time}
       </S.CountdownParagraph>
       <S.HomeButton className="home-button" onClick={() => router.push(`/${user?.country}`)}>
-        &larr; Home
+        &larr; {countdownTranslations.countdown.home}
       </S.HomeButton>
     </S.CountdownContainer>
   );

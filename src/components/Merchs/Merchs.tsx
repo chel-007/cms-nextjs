@@ -93,7 +93,7 @@ const Merchs: FC = () => {
 
   const getConversionRate = (currency: string) => {
     const conversionRates: Record<string, number> = {
-      'NGN': 410,
+      'NGN': 710,
       'INR': 75,
       'EUR': 0.85,
       'SGD': 1.35,
@@ -147,19 +147,30 @@ const Merchs: FC = () => {
   };
   
 
-  const handlePersonalizedShopping = () => {
-    const sortedProducts = sortProducts();
-    setSortedProducts(sortedProducts);
-  };
+  // const handlePersonalizedShopping = () => {
+  //   const sortedProducts = sortProducts();
+  //   setSortedProducts(sortedProducts);
+  // };
 
   const handleShoppingModeToggle = () => {
     setPersonalizedShopping(!personalizedShopping);
   };
 
-  let merchTranslations = undefined;
+  interface MerchTranslations {
+    merch: {
+    cart: string;
+    price: string;
+    personalisedShopping: string;
+    normalShopping: string;
+    noProducts: string;
+    }
+  }
+  
+  let merchTranslations: MerchTranslations | undefined = undefined;
 
   if (fastCountry){
     merchTranslations = loadTranslations(fastCountry as string);
+    console.log(merchTranslations?.merch.cart)
   }  else {
     merchTranslations = loadTranslations('nigeria');
   }
@@ -172,6 +183,8 @@ const Merchs: FC = () => {
       nigeria: 'en',
       spain: 'es',
       france: 'fr',
+      singapore:'mn',
+      india: 'hi',
       // Add mappings for other countries as needed
     };
     
@@ -191,25 +204,29 @@ const Merchs: FC = () => {
     <S.ProductCont>
     <S.Overlay></S.Overlay>
     <S.Button onClick={handleShoppingModeToggle}>
-        {personalizedShopping ? "Switch to Normal Shopping" : "Use Personalized Shopping"}
-      </S.Button>
-      <S.ProductList className="product-list">
-        {sortedProducts.length > 0 ? (
-          sortedProducts.map((product) => (
-            <S.Product key={product.id} className="product">
-              <Image style={{ width: '100%', height: 'auto' }} src={product.image} alt={product.name} width={200} height={200} />
-              {/* <S.ProductOverlay> */}
-              <S.ProductName>{product.name}</S.ProductName>
-              <S.ProductPrice>Price: {convertToUserCurrency(product.priceUSD, userCurrency)} {userCurrency}</S.ProductPrice>
-              {/* Display other product details */}
-              {/* </S.ProductOverlay> */}
-              <S.AddProductButton>Add to Cart</S.AddProductButton>
-            </S.Product>
-          ))
-        ) : (
-          <p>No products available for your selection.</p>
-        )}
-      </S.ProductList>
+  {personalizedShopping ? 
+    (merchTranslations?.merch.normalShopping ?? "Switch to Normal Shopping") : 
+    (merchTranslations?.merch.personalisedShopping ?? "Use Personalised Shopping")
+  }
+</S.Button>
+<S.ProductList className="product-list">
+  {sortedProducts.length > 0 ? (
+    sortedProducts.map((product) => (
+      <S.Product key={product.id} className="product">
+        <Image style={{ width: '100%', height: 'auto' }} src={product.image} alt={product.name} width={200} height={200} />
+        {/* <S.ProductOverlay> */}
+        <S.ProductName>{product.name}</S.ProductName>
+        <S.ProductPrice>{merchTranslations?.merch?.price}: {convertToUserCurrency(product.priceUSD, userCurrency)} {userCurrency}</S.ProductPrice>
+        {/* Display other product details */}
+        {/* </S.ProductOverlay> */}
+        <S.AddProductButton>{merchTranslations?.merch?.cart ?? "Add to Cart"}</S.AddProductButton>
+      </S.Product>
+    ))
+  ) : (
+    <p>{merchTranslations?.merch?.noProducts ?? "No Produts Available for Your Selection"}</p>
+  )}
+</S.ProductList>
+
     </S.ProductCont>
   );
 };

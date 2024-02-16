@@ -10,6 +10,11 @@ import * as S from "./index.styled";
 
 interface SceneTranslations {
   ageRestricted?: boolean;
+  ageRestriction?: string;
+  durationText?: string;
+  home?: string;
+  prev?: string;
+  next?: string;
   title?: string;
   img?: string;
   plot?: string;
@@ -55,7 +60,7 @@ const Scenes: React.FC = () => {
     <S.Scene className='Scene'>
       <S.SceneContainer className="scene-container">
         {sceneTranslations['ageRestricted'] && userData.age < 18 ? (
-          <div className="blank-title">Content closed for viewing due to age restrictions.</div>
+          <div className="blank-title">{sceneTranslations['ageRestriction']}</div>
         ) : (
           <S.SceneTitle className="scene-title">{sceneTranslations['title']}</S.SceneTitle>
         )}
@@ -80,18 +85,18 @@ const Scenes: React.FC = () => {
 
         <S.SceneDetails className="scene-details">
           {sceneTranslations['ageRestricted'] && userData.age < 18 ? (
-            <div>Content closed for viewing due to age restrictions.</div>
+            <div>{sceneTranslations['ageRestriction']}</div>
           ) : (
             <>
               <S.ScenePlot className="scene-plot">{sceneTranslations['plot']}</S.ScenePlot>
-              <S.SceneDuration className="scene-duration">Duration: {sceneTranslations['duration']}</S.SceneDuration>
+              <S.SceneDuration className="scene-duration">{sceneTranslations['durationText']}: {sceneTranslations['duration']}</S.SceneDuration>
             </>
           )}
         </S.SceneDetails>
         <S.SceneButtons className="scene-buttons">
-          {sceneTranslations['hasPrev'] && <S.SceneButton onClick={() => router.push(`/${router.query.country}/scene/${parseInt(router.query.sceneid as string) - 1}`)} className="scene-button">Prev</S.SceneButton>}
-          <S.SceneButton onClick={() => router.push(`/${router.query.country}`)} className="button">Go Home</S.SceneButton>
-          {sceneTranslations['hasNext'] && <S.SceneButton onClick={() => router.push(`/${router.query.country}/scene/${parseInt(router.query.sceneid as string) + 1}`)} className="scene-button">Next</S.SceneButton>}
+          {sceneTranslations['hasPrev'] && <S.SceneButton onClick={() => router.push(`/${router.query.country}/scene/${parseInt(router.query.sceneid as string) - 1}`)} className="scene-button">{sceneTranslations['prev']}</S.SceneButton>}
+          <S.SceneButton onClick={() => router.push(`/${router.query.country}`)} className="button">{sceneTranslations['home']}</S.SceneButton>
+          {sceneTranslations['hasNext'] && <S.SceneButton onClick={() => router.push(`/${router.query.country}/scene/${parseInt(router.query.sceneid as string) + 1}`)} className="scene-button">{sceneTranslations['next']}</S.SceneButton>}
         </S.SceneButtons>
         <div style={{ height: '50px', width: '100%' }}></div>
       </S.SceneContainer>
@@ -101,10 +106,16 @@ const Scenes: React.FC = () => {
 
 const loadTranslations = (country: string) => {
   switch (country) {
+    case 'nigeria':
+      return require('../../utils/translations/en.json');
     case 'france':
       return require('../../utils/translations/fr.json');
     case 'spain':
       return require('../../utils/translations/es.json');
+    case'singapore':
+      return require('../../utils/translations/mn.json');
+    case 'india':
+      return require('../../utils/translations/hi.json');
     // Add cases for other languages as needed
     default:
       return require('../../utils/translations/en.json');
