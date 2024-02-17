@@ -153,7 +153,7 @@ const NavBar: FC = () => {
           router.push('/singapore');
           break;
       default:
-        router.push('/nigeria');
+        router.push('/general');
         break;
     }
   };
@@ -164,24 +164,43 @@ const NavBar: FC = () => {
           <h1 style={{ fontSize: '3.2rem', color: '#FFA500' }}>CMS Fandom</h1>
       </Link>
       <S.Nav>
-        {user && (
-          <>
-            <S.Link href={`/${user.country?.toLowerCase()}/userprofile`}>
-                <h1 className="link route">{getTranslation(user.country, 'profile')}</h1>
-            </S.Link>
-            <S.Link href={`/${user.country?.toLowerCase()}/merch`}>
-                <h1 className="link route">{getTranslation(user.country, 'merch')}</h1>
-            </S.Link>
-            {/* <S.Link href={`/${user.country}/fanmeetup`}>
-                <h1 className="link route">{getTranslation(user.country, 'fanMeetup')}</h1>
-            </S.Link> */}
-            <S.Link href={`/${user.country?.toLowerCase()}/countdown`}>
-                <h1 className="link route">{getTranslation(user.country, 'countdown')}</h1>
-            </S.Link>
-          </>
-        )}
-       
-      </S.Nav>
+  {country && (
+    <>
+      {['nigeria', 'spain', 'france', 'singapore', 'india'].includes(country.toLowerCase()) && (
+        <>
+          <S.Link href={`/${user.country?.toLowerCase()}/userprofile`}>
+            <h1 className="link route">{getTranslation(user.country, 'profile')}</h1>
+          </S.Link>
+          <S.Link href={`/${user.country?.toLowerCase()}/merch`}>
+            <h1 className="link route">{getTranslation(user.country, 'merch')}</h1>
+          </S.Link>
+          {/* <S.Link href={`/${user.country}/fanmeetup`}>
+              <h1 className="link route">{getTranslation(user.country, 'fanMeetup')}</h1>
+          </S.Link> */}
+          <S.Link href={`/${user.country?.toLowerCase()}/countdown`}>
+            <h1 className="link route">{getTranslation(user.country, 'countdown')}</h1>
+          </S.Link>
+        </>
+      )}
+      {!['nigeria', 'spain', 'france', 'singapore', 'india'].includes(country.toLowerCase()) && (
+        <>
+          <S.Link href={`/general/userprofile`}>
+            <h1 className="link route">{getTranslation('general', 'profile')}</h1>
+          </S.Link>
+          <S.Link href={`/general/merch`}>
+            <h1 className="link route">{getTranslation('general', 'merch')}</h1>
+          </S.Link>
+          {/* <S.Link href={`/general/fanmeetup`}>
+              <h1 className="link route">{getTranslation('general', 'fanMeetup')}</h1>
+          </S.Link> */}
+          <S.Link href={`/general/countdown`}>
+            <h1 className="link route">{getTranslation('general', 'countdown')}</h1>
+          </S.Link>
+        </>
+      )}
+    </>
+  )}
+</S.Nav>
       {renderLoginState()}
     </S.Header>
   );

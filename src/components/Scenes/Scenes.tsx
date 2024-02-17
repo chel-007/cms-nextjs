@@ -95,7 +95,7 @@ const Scenes: React.FC = () => {
         </S.SceneDetails>
         <S.SceneButtons className="scene-buttons">
           {sceneTranslations['hasPrev'] && <S.SceneButton onClick={() => router.push(`/${router.query.country}/scene/${parseInt(router.query.sceneid as string) - 1}`)} className="scene-button">{sceneTranslations['prev']}</S.SceneButton>}
-          <S.SceneButton onClick={() => router.push(`/${router.query.country}`)} className="button">{sceneTranslations['home']}</S.SceneButton>
+          <S.SceneButton onClick={() => router.push(router.query.country ? `/${router.query.country}` : '/general')} className="button">{sceneTranslations['home']}</S.SceneButton>
           {sceneTranslations['hasNext'] && <S.SceneButton onClick={() => router.push(`/${router.query.country}/scene/${parseInt(router.query.sceneid as string) + 1}`)} className="scene-button">{sceneTranslations['next']}</S.SceneButton>}
         </S.SceneButtons>
         <div style={{ height: '50px', width: '100%' }}></div>

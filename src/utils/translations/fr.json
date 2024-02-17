@@ -30,7 +30,8 @@
     "price": "Price",
     "personalisedShopping": "Use Personalized Shopping",
     "normalShopping": "Switch to normal shopping",
-    "noProducts": "Aucun produit disponible pour votre sélection"
+    "noProducts": "Aucun produit disponible pour votre sélection",
+    "home": "Accueil"
   },
   "countdown": {
     "timezone": "Fuseau horaire",

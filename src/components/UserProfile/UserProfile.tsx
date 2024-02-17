@@ -9,6 +9,8 @@ const Profile = () => {
   const { user } = useAuthentication();
   const router = useRouter();
 
+  const appCountry = router.query.country;
+
   const country = user?.country;
 
   const [userData] = useState({
@@ -116,7 +118,7 @@ const Profile = () => {
           </S.RightDetails>
         </S.UserDetails>
       </S.ProfileContainer>
-      <S.HomeButton className="home-button" onClick={() => router.push(`/${user?.country}`)}>
+      <S.HomeButton className="home-button" onClick={() => router.push(`/${appCountry}`)}>
         &larr; {userTranslations.userProfile.home}
       </S.HomeButton>
     </S.UserProfileCont>

@@ -29,6 +29,7 @@ export const ProductList = styled.div`
   justify-content: center;
   gap: 20px;
   padding: 0 85px;
+  padding-bottom: 150px;
 
 `;
 
@@ -106,6 +107,32 @@ export const Button = styled.a`
   background-color: orange; /* Orange button color */
   color: white;
   font-size: 13px;
+  cursor: pointer;
+  border: none;
+  border-radius: 35px;
+  text-decoration: none;
+  z-index: 1;
+
+  &:hover {
+    background-color: darkorange; /* Darker orange color on hover */
+  }
+
+  @media screen and (max-width: 768px) {
+    padding: 15px 40px;
+    font-size: 18px;
+  }
+`;
+
+export const HomeButton = styled.a`
+  position: absolute;
+  bottom: 0px; /* Adjust as needed */
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 10px 50px;
+  margin-bottom: 20px;
+  background-color: orange; /* Orange button color */
+  color: white;
+  font-size: 18px;
   cursor: pointer;
   border: none;
   border-radius: 35px;

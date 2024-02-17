@@ -30,7 +30,8 @@
       "price": "Price",
       "personalisedShopping": "Use Personalized Shopping",
       "normalShopping": "Switch to normal shopping",
-      "noProducts": "No products available for your selection"
+      "noProducts": "No products available for your selection",
+      "home": "Home"
     },
     "countdown": {
       "timezone": "Timezone",

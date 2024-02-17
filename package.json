@@ -13,6 +13,7 @@
     "@fontsource/lora": "^5.0.8",
     "@fontsource/playfair-display": "^4.5.13",
     "@tanstack/react-query": "^4.24.4",
+    "luxon": "^3.4.4",
     "next": "^13.5.3",
     "next-api-middleware": "^2.0.1",
     "next-auth": "^4.22.0",
@@ -21,6 +22,7 @@
     "styled-components": "^5.3.6"
   },
   "devDependencies": {
+    "@types/luxon": "^3.4.2",
     "@types/node": "18.11.18",
     "@types/react": "18.0.27",
     "@types/react-dom": "18.0.10",

@@ -30,7 +30,8 @@
         "price": "价格",
         "personalisedShopping": "使用个性化购物",
         "normalShopping": "切换到普通购物",
-        "noProducts": "您选择的产品目前无货"
+        "noProducts": "您选择的产品目前无货",
+        "home": "主页"
     },
     "countdown": {
         "timezone": "时区",

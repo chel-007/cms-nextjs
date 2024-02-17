@@ -1,6 +1,7 @@
 import { FC, useEffect, useState } from 'react';
 import { useAuthentication } from 'src/lib/hooks/use-authentication';
 import { useRouter } from 'next/router';
+import { DateTime } from 'luxon';
 
 import * as S from "./index.styled";
 
@@ -15,6 +16,8 @@ const Countdowns: FC<CountdownProps> = () => {
 
   const country = user?.country;
 
+  const appCountry = router.query.country;
+
   const timezones: Record<string, string> = {
     nigeria: 'Africa/Lagos',
     spain: 'Europe/Madrid',
@@ -23,23 +26,92 @@ const Countdowns: FC<CountdownProps> = () => {
     india: 'Asia/Kolkata',
   };
 
-  const releaseDate = new Date('2024-02-30');
+  const releaseDate = DateTime.fromISO('2024-02-29T23:59:59', { zone: 'UTC' });
 
-  const calculateTimeDifference = (timezone1: string, timezone2: string): number => {
-    const currentTime = new Date();
-    const offset1 = currentTime.getTimezoneOffset() * 60000;
-    const offset2 =
-      new Date(currentTime.toLocaleString('en-US', { timeZone: timezone2 })).getTimezoneOffset() * 60000;
-    const difference = offset2 - offset1;
-    return difference;
-  };
+  const releaseDateDay = releaseDate.day;
+  const releaseDateHour = releaseDate.hour;
+  const releaseDateMinute = releaseDate.minute;
+  const releaseDateSecond = releaseDate.second;
 
-  const calculateRemainingTime = (releaseDate: Date, timezone: string | null): number => {
-    const currentTime = new Date();
-    const timeDifference = calculateTimeDifference('GMT', timezone || '');
-    const remainingTime = releaseDate.getTime() - (currentTime.getTime() + timeDifference);
-    return remainingTime;
-  };
+ 
+  useEffect(() => {
+    if (user && user.country && timezones[user.country.toLowerCase()]) {
+      const userTimezone = timezones[user.country.toLowerCase()];
+
+      const localTime = DateTime.local().setZone(userTimezone, { keepLocalTime: false });
+
+      const localTimeDay = localTime.day;
+      const localTimeHour = localTime.hour;
+      const localTimeMinute = localTime.minute;
+      const localTimeSecond = localTime.second;
+
+
+      console.log(releaseDateDay - localTimeDay);
+      console.log(releaseDateHour - localTimeHour);
+      console.log(releaseDateMinute - localTimeMinute);
+      console.log(releaseDateSecond - localTimeSecond);
+
+      // console.log(localTime.toString());
+      // console.log(releaseDate.toString());
+      //const timeDifference = (releaseDate).diff(localTime).as('milliseconds');
+
+      const daysDiff = releaseDate.day - localTime.day;
+      const hoursDiff = releaseDate.hour - localTime.hour;
+      const minutesDiff = releaseDate.minute - localTime.minute;
+      const secondsDiff = releaseDate.second - localTime.second;
+
+      // Calculate total difference in milliseconds
+      const totalDifference = ((daysDiff * 24 + hoursDiff) * 60 + minutesDiff) * 60 * 1000 + secondsDiff * 1000;
+      setRemainingTime(totalDifference);
+
+      //setRemainingTime(timeDifference);
+    } else {
+      // User country not supported or not logged in, calculate remaining time in UTC
+      const currentTime = DateTime.now().setZone('UTC');
+
+      const currentTimeDay = currentTime.day;
+      const currentTimeHour = currentTime.hour;
+      const currentTimeMinute = currentTime.minute;
+      const currentTimeSecond = currentTime.second;
+
+      const daysDiff = releaseDate.day - currentTime.day;
+      const hoursDiff = releaseDate.hour - currentTime.hour;
+      const minutesDiff = releaseDate.minute - currentTime.minute;
+      const secondsDiff = releaseDate.second - currentTime.second;
+
+      const totalDifference = ((daysDiff * 24 + hoursDiff) * 60 + minutesDiff) * 60 * 1000 + secondsDiff * 1000;
+      setRemainingTime(totalDifference);
+      // const timeDifference = releaseDate.diff(currentTime).as('milliseconds');
+      // setRemainingTime(timeDifference);
+    }
+  
+    const interval = setInterval(() => {
+      setRemainingTime((prevTime) => {
+        if (prevTime !== null) {
+          return prevTime - 1000;
+        }
+        return null; 
+      });
+    }, 1000);
+  
+    return () => clearInterval(interval);
+  }, [user]);
+  
+  // const calculateTimeDifference = (timezone1: string, timezone2: string): number => {
+  //   const currentTime = new Date();
+  //   const offset1 = currentTime.getTimezoneOffset() * 60000;
+  //   const offset2 =
+  //     new Date(currentTime.toLocaleString('en-US', { timeZone: timezone2 })).getTimezoneOffset() * 60000;
+  //   const difference = offset2 - offset1;
+  //   return difference;
+  // };
+
+  // const calculateRemainingTime = (releaseDate: Date, timezone: string | null): number => {
+  //   const currentTime = new Date();
+  //   const timeDifference = calculateTimeDifference('GMT', timezone || '');
+  //   const remainingTime = releaseDate.getTime() - (currentTime.getTime() + timeDifference);
+  //   return remainingTime;
+  // };
 
   useEffect(() => {
     if (country && timezones[country.toLowerCase()]) {
@@ -51,15 +123,15 @@ const Countdowns: FC<CountdownProps> = () => {
     }
   }, [country]);
 
-  useEffect(() => {
-    const timer = setInterval(() => {
-      if (timezone) {
-        setRemainingTime(calculateRemainingTime(releaseDate, timezone));
-      }
-    }, 1000);
+  // useEffect(() => {
+  //   const timer = setInterval(() => {
+  //     if (timezone) {
+  //       setRemainingTime(calculateRemainingTime(releaseDate, timezone));
+  //     }
+  //   }, 1000);
 
-    return () => clearInterval(timer);
-  }, [releaseDate, timezone]);
+  //   return () => clearInterval(timer);
+  // }, [releaseDate, timezone]);
 
   const formatTime = (time: number): string => {
     if (time < 10) {
@@ -141,7 +213,7 @@ const Countdowns: FC<CountdownProps> = () => {
         </a>{' '}
         {countdownTranslations.countdown.time}
       </S.CountdownParagraph>
-      <S.HomeButton className="home-button" onClick={() => router.push(`/${user?.country}`)}>
+      <S.HomeButton className="home-button" onClick={() => router.push(`/${appCountry}`)}>
         &larr; {countdownTranslations.countdown.home}
       </S.HomeButton>
     </S.CountdownContainer>

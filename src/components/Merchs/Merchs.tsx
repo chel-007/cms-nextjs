@@ -50,6 +50,8 @@ const Merchs: FC = () => {
 
   const fastCountry = user?.country;
 
+  const appCountry = router.query.country;
+
   const getUserCurrency = (country: string) => {
     switch (country) {
       case 'nigeria':
@@ -163,6 +165,7 @@ const Merchs: FC = () => {
     personalisedShopping: string;
     normalShopping: string;
     noProducts: string;
+    home: string;
     }
   }
   
@@ -226,7 +229,9 @@ const Merchs: FC = () => {
     <p>{merchTranslations?.merch?.noProducts ?? "No Produts Available for Your Selection"}</p>
   )}
 </S.ProductList>
-
+<S.HomeButton className="home-button" onClick={() => router.push(`/${appCountry}`)}>
+        &larr; {merchTranslations?.merch?.home}
+      </S.HomeButton>
     </S.ProductCont>
   );
 };
