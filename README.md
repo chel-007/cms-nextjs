@@ -106,9 +106,82 @@ Using and accessing the CMS Fandom app is a breeze. Follow these steps to experi
 - Next, you can visit the Userprofile Page, where all your user details are beautifully displayed, including your Avatar Profile Picture.
 - Drop by the Countdown page to catch a glimpse of the ticking timer, ***counting down to the next release of my YouTube video*** for the Call Me Super animated series. It would be displayed in your local timezone.
 - Explore the Merch Page and browse the adorable products listed. Click the "Use Personalized Shopping" button to have items filtered for your preference.
-- Check out the prices of items in your local currency, enhancing the shopping experience more.
-- Add items you adore to the Cart. Watch the ***Cart Total Items*** and ***Total Cost*** update dynamically as you shop. You Can't checkout (YET!)
+- Check out the prices of items in your local currency, enhancing the shopping experience more (You can't add Items to Cart and Checkout in this Build).
+- Double Click on the Logout Button to well, ***Logout***.
 - Rinse and repeat for endless enjoyment! 🔄
+
+
+
+
+
+***Next, Let's delve into the codes powering this application and explore how it's been constructed.***
+
+## Integrating Basic Login Auth (Next.js) from Affinidi Docs
+The initial step involved cloning the directory of the ***Affinidi Next.js Basic Login Auth***. The project came with most of the necessary packages, components, and imports, making it seamless to set up the application connected to my Affinidi Portal(cms fandom).
+
+While there was a slight learning curve, especially concerning the callback URL, once I grasped this concept, toggling between local and production environments became straightforward.
+
+## Developing the Main App Page, Navbar, and Implementing Country-Specific Redirect
+
+* The main app page serves as the introduction to the application, acting as the landing page alongside the Navbar component. Initially, it shows only the login button since users couldn't navigate to other pages like Merch, Scenes, or UserProfile without specifying the country ID.
+
+> The Code for this Component can be Found in 
+> * pages/index.tsx
+> * component/landingpage
+> * component/navbar
+
+Here's how it works: The Navbar utilizes the authenticated state of the user to render the full set of links, revealing them only after a successful login.
+
+Upon user login, the Navbar, present on every page, verifies if the user's country is among the five supported ones. If so, it ***directs them to the appropriate homepage and displays the links***. Otherwise, it redirects them to the general page.
+
+Additionally, I've implemented logic to switch to the logout button upon successful user login. Notably, the Navbar redirects users to the country homepage ***only if they are on the MainPage*** (isSigninPage), eliminating the need for redirects on other pages (which would be weird behavior).
+
+
+## Country Pages, Translation, Dynamic Routing
+
+After landing on their respective country homepage (or the general one), users are presented with their first view. To streamline the process, I decided to create separate homepage layouts for each of the five supported countries. This approach was also necessary since i would be creating individual country-specific pages within the pages directory.
+
+> The Code for these Features can be Found in 
+> * pages/india, pages/nigeria, pages/france, pages/spain, pages/singapore
+> * component/India {Nigeria, France, Spain, Singapore}
+
+Each of the country pages features a `loadTranslations` function responsible for retrieving the appropriate translation file based on the country provided as a string. By using the country as a key, the function fetches the corresponding translation file and returns it. In cases where the country isn't found, the function defaults to English translation. 
+
+Throughout the app, I ensure uniformity by ***converting the country ID to lowercase***.
+
+The returned components in the page utilize this translation by passing a string for each element containing text.
+
+Dynamic routing occurs primarily from two main points: ***the Navbar and the Read Scene buttons***. I begin by creating a `[country]` folder inside the `pages` directory, which serves as the variable for passing the user's country. Routing is then established using paths like **`/${user.country?.toLowerCase()}/userprofile`**
+
+
+
+## Translation Json Objects 
+I utilize five translated JSON files containing objects with key-value pairs used for translation purposes throughout the application. These translation files, along with a language utilities function (`languageutils.js`), reside within the `utils` folder. Each file encompasses objects, such as `navigation`, `country`, `userprofile`, `merch`, `countdown`, and `scenes` (1, 2, 3), tailored to specific areas of the application.
+
+> The Code for this can be Found in 
+> * src/utils/translations (en,json, es.json, fr.json, mn.json, hi.json) 
+> * src/utils/languageutils.js (used only by the navbar to get translation)
+> * **loadTranslation** function in each Country Homepage and Navbar Link Pages
+
+
+## Countdown Page Elements
+The Countdown Page was more advanced because of the feature i wanted to build compared to other sections of the application (*which mostly involved fetching user data, implementing translations, and styling components*). 
+However, I wanted to approach the countdown functionality in a dynamic manner.
+
+Initially, one approach could have involved querying the user's country and using it to define five target time zones: Africa/Lagos, Europe/Madrid, Europe/Paris, Asia/Singapore, and Asia/Kolkata. From there, I could have specified the time zone differences from UTC and utilized this data to calculate the timer countdown. However, this method wasn't really cool as it didn't ***account for changes in Daylight Savings Time*** and wasn't intuitive overall.
+
+So I used Luxon, a robust and user-friendly JavaScript library designed for handling dates and times. It uses the IANA Database to Track and Update Timezones with precision.
+
+Using Luxon, I began by establishing the user's time zone and storing it within a variable. Additionally, I formatted the release date (countdown timeline) into a DateTime string, facilitating a detailed and direct comparison between the two time points (***releaseDate & users Local Time***) across days, hours, minutes, and seconds.
+
+I then integrated this time difference within a setInterval function, where the timer deducts one second every second, ensuring an interactive countdown for the user. Accordingly, in cases where the user's time zone isn't supported, the function defaults to ***GMT*** TimeZone.
+
+> The Code for this can be Found in 
+> * src/components/countdown
+
+
+***That concludes most of the Component and Feature Breakdown Integrated into CMS Fandom Using Affinidi Login & Vault.***
+
 
 ## Merch Items for CMS :example (built with AI)
 
