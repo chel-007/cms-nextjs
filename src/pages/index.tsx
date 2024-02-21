@@ -1,6 +1,5 @@
 import styled from "styled-components";
 
-import LocalLandingPage from "src/components/LocalLandingPage/LocalLandingPage";
 import LandingPage from "src/components/LandingPage/LandingPage";
 
 import { pxToRem } from "src/styles/px-to-rem";

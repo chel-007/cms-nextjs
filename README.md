@@ -11,15 +11,15 @@ In this writeup, I delve into the integration process of Affinidi Login & Vault 
 
 After Learning about Affinidi and recognizing its potential in various Web3 applications, I was intrigued and decided to incorporate it into an ongoing personal project, and saw this bounty as a perfect opportunity to do so.
 
-CMS (Call Me Super) Fandom is a site I've been designing some concepts about, now built to a pre-alpha stage, with plans for continuous development. As the name suggests, it serves as a fan site for my upcoming animated series.
+CMS (Call Me Super) Fandom is a site I've been designing some concepts about, now built to a pre-alpha stage during the bounty, i plan to continue the development. As the name suggests, it would serve as a fan site for my upcoming animated series.
 
-The integration of Affinidi seamlessly aligned with my initial vision for the site, and it even inspired me to push further in one particular aspect: **creating an app experience that offers unlimited possibilities for players**. Leveraging Affinidi, I introduced a new set of features that not only enhanced the app's functionality but also made it more intuitive and comprehensive.
+The integration of Affinidi products aligned with my initial vision for the site, and even inspired me to push further in one particular aspect: **creating an app experience that is seamless(fast) with personalized features**. Leveraging Affinidi, I introduced a new set of features that not only enhanced the app's functionality but also made it more intuitive and comprehensive.
 
 ## Features Implemented with Affinidi Products
 
 ### Multilingual Support
 
-In envisioning a fan site that could be accessible to a global audience, i wanted to test out the integration of multilingual support to ensure inclusivity and user comfort. I opted to support five primary languages/countries from the outset: **Nigeria, Spanish, French, Singapore, and India**.
+In envisioning a fan site that could be accessible to a global audience, i wanted to test out the integration of multilingual support to ensure inclusivity and user comfort. I opted to support five primary languages/countries from the onset: **Nigeria, Spanish, French, Singapore, and India**.
 
 The choice of languages was to showcase the cool translation capabilities of the app, specifically focusing on Spanish and French for broader accessibility, while Singapore and Indian languages were added for comfortable testing with the Stackup team and Users.
 

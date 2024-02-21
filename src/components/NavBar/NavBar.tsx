@@ -11,6 +11,7 @@ import { pxToRem } from "src/styles/px-to-rem";
 import { getTranslation } from 'src/utils/languageutils.js';
 
 import * as S from "./NavBar.styled";
+import { useLocalContent } from "src/lib/hooks/use-local-content";
 
 const Button = styled.button<{ variant: "primary" | "secondary" }>`
   display: flex;
@@ -51,6 +52,7 @@ const NavBar: FC = () => {
   const [isSignInPage, setIsSignInPage] = useState(false);
   const [confirmLogOut, setConfirmLogOut] = useState(false);
   const { user, isAuthenticated, isLoading } = useAuthentication();
+  const useCountry = useLocalContent()
 
   const country = user?.country
 
@@ -84,8 +86,11 @@ const NavBar: FC = () => {
       return;
     }
 
-    await signOut();
-    router.push('/');
+
+      await signOut();
+      router.push('/'); 
+      console.log("did i run")
+  
     
   }
 
@@ -95,6 +100,13 @@ const NavBar: FC = () => {
       redirectToCountrySpecificPage();
     }
   }, [isAuthenticated]);
+
+  // useEffect(() => {
+  //   console.log(useCountry.country)
+  //   if (useCountry.country !== false && useCountry.country !== user?.country) {
+  //     router.push('/');
+  //   }
+  // }, [isAuthenticated]);
 
   const renderLoginState = () => {
     // console.log(user)

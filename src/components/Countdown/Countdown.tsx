@@ -74,9 +74,9 @@ const Countdowns: FC<CountdownProps> = () => {
       const currentTimeMinute = currentTime.minute;
       const currentTimeSecond = currentTime.second;
 
-      const daysDiff = releaseDate.day - currentTime.day;
-      const hoursDiff = releaseDate.hour - currentTime.hour;
-      const minutesDiff = releaseDate.minute - currentTime.minute;
+      const daysDiff = releaseDate.day - currentTimeDay;
+      const hoursDiff = releaseDate.hour - currentTimeHour;
+      const minutesDiff = releaseDate.minute - currentTimeMinute;
       const secondsDiff = releaseDate.second - currentTime.second;
 
       const totalDifference = ((daysDiff * 24 + hoursDiff) * 60 + minutesDiff) * 60 * 1000 + secondsDiff * 1000;

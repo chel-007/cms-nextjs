@@ -12,7 +12,6 @@ import { pxToRem } from "src/styles/px-to-rem";
 import { useAuthentication } from "src/lib/hooks/use-authentication";
 
 import * as S from "./LandingPage.styled";
-import NavBar from "../NavBar/NavBar";
 
 const Space = styled.div`
   height: ${pxToRem(80)};
@@ -31,9 +30,10 @@ const LandingPage: FC = () => {
   return (
     <S.AppCont>
         {/* <NavBar /> */}
+        <S.Overlay className="overlay"></S.Overlay>
       {router.pathname === '/' && (
        <div>
-          <S.Overlay className="overlay"></S.Overlay>
+          
           <S.Title className="title">CMS Fandom</S.Title>
           <S.Subtitle className="subtitle">(Call Me Super)</S.Subtitle>
           <Image width={5} src={logo} alt="Logo" />

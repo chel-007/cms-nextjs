@@ -141,7 +141,9 @@ const Merchs: FC = () => {
   
     // Filter products based on user's age group and gender
     const filteredProducts = products.filter((product) => {
-      return (product.gender === user?.gender || 'unisex') && product.ageGroup === userAgeGroup;
+      console.log(product.gender)
+      console.log(user?.gender)
+      return (product.gender === user?.gender || product.gender === 'unisex') && product.ageGroup === userAgeGroup;
     });
   
     // Return up to 5 filtered products

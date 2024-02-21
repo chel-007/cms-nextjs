@@ -103,6 +103,7 @@ export const Button = styled.a`
   left: 80%;
   top: 6%;
   transform: translateX(-30%);
+  transform: translateY(130%);
   padding: 10px 50px;
   background-color: orange; /* Orange button color */
   color: white;

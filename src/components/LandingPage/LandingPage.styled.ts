@@ -21,14 +21,14 @@ export const Overlay = styled.div`
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)); /* Dark overlay */
-  z-index: 1;
+  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)); /* Dark overlay */
+  z-index: 0;
 `;
 
 export const Title = styled.h1`
   font-size: 16rem;
   margin-bottom: 7px;
-  color: #FFA500; /* Orange color */
+  color: #FFA500;
   z-index: 2;
 `;
 
