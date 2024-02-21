@@ -25,14 +25,15 @@
   "country": "Pays",
   "home": "Accueil"
   },
+
   "merch": {
-    "cart": "Add to Cart",
-    "price": "Price",
-    "personalisedShopping": "Use Personalized Shopping",
-    "normalShopping": "Switch to normal shopping",
+    "cart": "Ajouter au panier",
+    "price": "Prix",
+    "personalisedShopping": "Utiliser les achats personnalisés",
+    "normalShopping": "Passer aux achats normaux",
     "noProducts": "Aucun produit disponible pour votre sélection",
     "home": "Accueil"
-  },
+    },
   "countdown": {
     "timezone": "Fuseau horaire",
     "days": "Jours",
