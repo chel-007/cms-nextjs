@@ -57,6 +57,13 @@ The implementation involved determining the appropriate conversion rate for each
 
 This intuitive feature enhances the shopping experience for users browsing CMS merchandise.
 
+#### Conversion Rates Used:
+
+* NGN to USD - 1500
+* EUR to USD - 0.92
+* SGD to USD - 1.34
+* INR to USD - 83
+
 ### Personalized Shopping Experience
 
 Another feature i integrated was a personalized shopping feature into the Merch Page, allowing users to view products tailored specifically to them. This feature utilizes basic user data such as **age group and gender**, which has been collected from the Vault after User Login with Affinidi.
@@ -66,9 +73,6 @@ When users opt for personalized shopping, the system **filters all available pro
 This customization enhances the shopping experience by presenting users with merch products that align more closely with their preferences.
 
 
-Here's a refined version of your description:
-
----
 
 ### Timezone Feature - Countdown Timer
 
@@ -84,11 +88,10 @@ Due to the vast number of timezones worldwide, the current implementation focuse
 - Singapore: 'Asia/Singapore'
 - India: 'Asia/Kolkata'
 
-Using JavaScript's Date and Time functions, i calculate the time difference between the supported timezones and GMT(greenwich meridian time). Then determine the ***difference between this adjusted time and the specified release date***. Currently, the release date is a static value but could be dynamically retrieved from a database much later.
+I go into more technical details later on how this feature has been built!
 
-Here's a refined version of your sentence:
 
-That concludes an overview of the features of CMS Fandom, all made possible through the seamless integration of Affinidi's Login & Vault functionalities.
+***That concludes an overview of the features of CMS Fandom, all made possible through the seamless integration of Affinidi's Login & Vault functionalities.***
 
 
 ## How to Use the App
@@ -104,11 +107,11 @@ Using and accessing the CMS Fandom app is a breeze. Follow these steps to experi
 - If you're under 18, Scene 2 is temporarily off-limits.
 **NB:** *To test this feature, simply tweak your age info briefly in Affinidi's Vault, log out, and log back in.*
 - Next, you can visit the Userprofile Page, where all your user details are beautifully displayed, including your Avatar Profile Picture.
-- Drop by the Countdown page to catch a glimpse of the ticking timer, ***counting down to the next release of my YouTube video*** for the Call Me Super animated series. It would be displayed in your local timezone.
+- Drop by the Countdown page to catch a glimpse of the ticking timer, ***counting down to the next release of my YouTube video*** for Call Me Super animated series. It would be displayed in your local timezone.
 - Explore the Merch Page and browse the adorable products listed. Click the "Use Personalized Shopping" button to have items filtered for your preference.
 - Check out the prices of items in your local currency, enhancing the shopping experience more (You can't add Items to Cart and Checkout in this Build).
 - Double Click on the Logout Button to well, ***Logout***.
-- Rinse and repeat for endless enjoyment! 🔄
+- Rinse and repeat for endless enjoyment! 🔄 (lol!)
 
 
 
@@ -142,8 +145,8 @@ Additionally, I've implemented logic to switch to the logout button upon success
 After landing on their respective country homepage (or the general one), users are presented with their first view. To streamline the process, I decided to create separate homepage layouts for each of the five supported countries. This approach was also necessary since i would be creating individual country-specific pages within the pages directory.
 
 > The Code for these Features can be Found in 
-> * pages/india, pages/nigeria, pages/france, pages/spain, pages/singapore
-> * component/India {Nigeria, France, Spain, Singapore}
+> * pages/india, pages/nigeria, pages/france, pages/spain, pages/singapore, pages/general
+> * component/India {Nigeria, France, Spain, Singapore, General}
 
 Each of the country pages features a `loadTranslations` function responsible for retrieving the appropriate translation file based on the country provided as a string. By using the country as a key, the function fetches the corresponding translation file and returns it. In cases where the country isn't found, the function defaults to English translation. 
 
@@ -158,6 +161,13 @@ Dynamic routing occurs primarily from two main points: ***the Navbar and the Rea
 ## Translation Json Objects 
 I utilize five translated JSON files containing objects with key-value pairs used for translation purposes throughout the application. These translation files, along with a language utilities function (`languageutils.js`), reside within the `utils` folder. Each file encompasses objects, such as `navigation`, `country`, `userprofile`, `merch`, `countdown`, and `scenes` (1, 2, 3), tailored to specific areas of the application.
 
+**I'm translating acorss the following:**
+* Nigeria - English
+* Spain - Spanish
+* France - French
+* India - Hindi
+* Singapore - Mandarin
+
 > The Code for this can be Found in 
 > * src/utils/translations (en,json, es.json, fr.json, mn.json, hi.json) 
 > * src/utils/languageutils.js (used only by the navbar to get translation)
@@ -170,7 +180,7 @@ However, I wanted to approach the countdown functionality in a dynamic manner.
 
 Initially, one approach could have involved querying the user's country and using it to define five target time zones: Africa/Lagos, Europe/Madrid, Europe/Paris, Asia/Singapore, and Asia/Kolkata. From there, I could have specified the time zone differences from UTC and utilized this data to calculate the timer countdown. However, this method wasn't really cool as it didn't ***account for changes in Daylight Savings Time*** and wasn't intuitive overall.
 
-So I used Luxon, a robust and user-friendly JavaScript library designed for handling dates and times. It uses the IANA Database to Track and Update Timezones with precision.
+So I used **Luxon**, ***a robust and user-friendly JavaScript library designed for handling dates and times***. It uses the IANA Database to Track and Update Timezones with precision.
 
 Using Luxon, I began by establishing the user's time zone and storing it within a variable. Additionally, I formatted the release date (countdown timeline) into a DateTime string, facilitating a detailed and direct comparison between the two time points (***releaseDate & users Local Time***) across days, hours, minutes, and seconds.
 

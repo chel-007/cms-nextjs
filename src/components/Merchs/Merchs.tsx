@@ -95,10 +95,10 @@ const Merchs: FC = () => {
 
   const getConversionRate = (currency: string) => {
     const conversionRates: Record<string, number> = {
-      'NGN': 710,
-      'INR': 75,
-      'EUR': 0.85,
-      'SGD': 1.35,
+      'NGN': 1500,
+      'INR': 83,
+      'EUR': 0.92,
+      'SGD': 1.34,
     };
     return conversionRates[currency] || 1;
   };
